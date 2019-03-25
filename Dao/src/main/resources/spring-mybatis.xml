@@ -17,26 +17,32 @@
     </bean>
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
-        <property name="driverClassName" value="${driver}" />
-        <property name="url" value="${url}" />
-        <property name="username" value="${username}" />
-        <property name="password" value="${password}" />
-        <!-- 初始化连接大小 -->
-        <property name="initialSize" value="${initialSize}" />
-        <!-- 连接池最大数量 -->
-        <property name="maxActive" value="${maxActive}" />
-        <!-- 连接池最大空闲 -->
-        <property name="maxIdle" value="${maxIdle}" />
-        <!-- 连接池最小空闲 -->
-        <property name="minIdle" value="${minIdle}" />
-        <!-- 获取连接最大等待时间 -->
-        <property name="maxWait" value="${maxWait}" />
+        <property name="driverClassName" value="${jdbc.driver}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <!--&lt;!&ndash; 初始化连接大小 &ndash;&gt;-->
+        <!--<property name="initialSize" value="${initialSize}" />-->
+        <!--&lt;!&ndash; 连接池最大数量 &ndash;&gt;-->
+        <!--<property name="maxActive" value="${maxActive}" />-->
+        <!--&lt;!&ndash; 连接池最大空闲 &ndash;&gt;-->
+        <!--<property name="maxIdle" value="${maxIdle}" />-->
+        <!--&lt;!&ndash; 连接池最小空闲 &ndash;&gt;-->
+        <!--<property name="minIdle" value="${minIdle}" />-->
+        <!--&lt;!&ndash; 获取连接最大等待时间 &ndash;&gt;-->
+        <!--<property name="maxWait" value="${maxWait}" />-->
     </bean>
 
     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="mapperLocations" value="classpath:com/scut/se/Dao/mapper/*.xml" />
+    </bean>
+
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 ,包下的类需要使用@MapperScan注解,否则容器注入会失败 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.scut.se.Dao.*" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 
     <!-- mybatis spring sqlSessionTemplate,使用时直接让spring注入即可 -->

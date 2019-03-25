@@ -6,7 +6,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter {
     /**
@@ -20,13 +20,16 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         System.out.println("This is  LoginInterceptor");
         UserBean userBean = (UserBean)request.getSession().getAttribute("user");
         System.out.println(userBean);
-        if(userBean!=null)
+        HttpSession session = request.getSession();
+        String url = request.getRequestURL().toString();
+        if(userBean!=null) {
             return true;
+        }
         else {
+            session.setAttribute("redirect_link",url);
             String basePath = request.getScheme()+"://"+request.getServerName()+":"
                     +request.getServerPort()+request.getContextPath()+"/";
             response.sendRedirect(basePath+"loginPage");
-
         }
         return false;
     }
@@ -42,6 +45,5 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     @Override
     public void afterConcurrentHandlingStarted(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
     }
-
 
 }

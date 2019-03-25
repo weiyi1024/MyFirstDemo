@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
@@ -26,8 +27,10 @@ public class CommonController {
             userBean.setName(user);
             userBean.setPwd(password);
             request.getSession().setAttribute("user", userBean);
-
-            response.sendRedirect(basePath + "Back/showUserInfo");
+//            response.sendRedirect(basePath+"/Back/showUserInfo");
+            HttpSession session = request.getSession();
+            String path = session.getAttribute("redirect_link").toString();
+            response.sendRedirect(path);
         } else
             response.sendRedirect(basePath+"loginPage");
     }

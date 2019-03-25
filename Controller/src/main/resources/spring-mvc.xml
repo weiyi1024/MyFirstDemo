@@ -11,11 +11,12 @@
         <!--给Controller加上后缀-->
         <property name="suffix" value=".jsp"></property>
     </bean>
-    <!-- 定义使用注解配置，扫描的包为com.scut.se.Controller -->
+    <!-- 定义使用注解配置，扫描的包为com.scut.se.Controller.Bussiness -->
     <mvc:annotation-driven />
     <context:component-scan base-package="com.scut.se.Controller.Bussiness" />
 
 
+    <!--"/Back"为前缀的都会被拦截到此拦截器-->
     <!--拦截器-->
     <mvc:interceptors>
         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
@@ -26,4 +27,5 @@
             <bean class="com.scut.se.Interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
+
 </beans>

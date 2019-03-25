@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
+//"/Back"为前缀
 public class BackController {
 
     @RequestMapping(value = "/showUserInfo",method = RequestMethod.GET)
@@ -17,4 +18,5 @@ public class BackController {
         System.out.println("Login Success!");
         return "This is a page to tell you login success";
     }
+
 }

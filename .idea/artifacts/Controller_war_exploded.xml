@@ -5,6 +5,11 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="Controller" />
+          <element id="module-output" name="Common" />
+          <element id="module-output" name="Dao" />
+          <element id="module-output" name="Domain" />
+          <element id="module-output" name="MyFirstDemo" />
+          <element id="module-output" name="Service" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.9.RELEASE" />
@@ -40,7 +45,7 @@
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.11" />
           <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:2.6.0" />
-          <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.18" />
+          <element id="library" level="project" name="Maven: com.alibaba:druid:1.1.12" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="Controller/web/Web" />

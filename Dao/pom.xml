@@ -46,6 +46,18 @@
                 </dependencies>
             </plugin>
         </plugins>
+        <!--将src/main/java目录下的配置文件（非.java文件）编译输出到target目录-->
+        <!--这个target目录最终会输出打包到out目录也就是artifact里面-->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
     </build>
 
 </project>

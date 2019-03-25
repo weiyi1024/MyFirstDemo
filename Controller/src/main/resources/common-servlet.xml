@@ -9,7 +9,7 @@
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!--给Contoller返回的String加上前缀-->
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
-		<!--给Controller加上后缀-->
+		<!--给Controller返回的String加上后缀-->
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	<!-- 定义使用注解配置，扫描的包为com.scut.se.Controller -->

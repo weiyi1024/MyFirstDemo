@@ -40,10 +40,15 @@
         </javaClientGenerator>
 
         <!--生成对应表及类名-->
-        <table tableName="user" domainObjectName="User" enableCountByExample="true"
+        <!--<table tableName="user" domainObjectName="User" enableCountByExample="true"-->
+               <!--enableUpdateByExample="true" enableDeleteByExample="true"-->
+               <!--enableSelectByExample="true" selectByExampleQueryId="true">-->
+        <!--</table>-->
+
+        <table tableName="container" domainObjectName="Container" enableCountByExample="true"
                enableUpdateByExample="true" enableDeleteByExample="true"
                enableSelectByExample="true" selectByExampleQueryId="true">
-
         </table>
+
     </context>
 </generatorConfiguration>
